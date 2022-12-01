@@ -2,31 +2,38 @@
 {
     abstract class Animal
     {
-        internal abstract void Talk();
+        private readonly string _creature;
+        private readonly string _verb;
+        private readonly string _sound;
+        internal Animal(string creature, string verb, string sound)
+        {
+            _creature = creature;
+            _verb = verb;
+            _sound = sound;
+        }
+
+        internal void Talk()
+        {
+            Console.WriteLine($"{_creature} {_verb} {_sound}");
+        }
     }
 
     class Cat : Animal
     {
-        internal override void Talk()
-        {
-            Console.WriteLine("Кошка мяучит 'мяу-мяу'");
-        }
+        public Cat() : base("Кошка", "мяучит", "'мяу-мяу'")
+        {}
     }
 
     class Dog : Animal
     {
-        internal override void Talk()
-        {
-            Console.WriteLine("Собака гавкает 'гав-гав-гав'");
-        }
+        public Dog() : base("Собака", "гавкает", "'гав-гав-гав'")
+        {}
     }
 
     class Goose : Animal
     {
-        internal override void Talk()
-        {
-            Console.WriteLine("Гусь гогочет 'га-га-га'");
-        }
+        public Goose() : base("Гусь", "гогочет", "'га-га-га'")
+        {}
     }
 
     public class Task2
