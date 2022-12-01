@@ -23,10 +23,24 @@
     {
         internal static void PrintMessageFrom(Creature creature)
         {
-            throw new NotImplementedException();
+            string message = "";
+            switch (creature)
+            {
+                case Dog dog:
+                    message = dog.Bark();
+                    break;
+                case Human human:
+                    message = human.Greeting();
+                    break;
+                case Alien alien:
+                    message = alien.Command();
+                    break;
+            }
+            Console.WriteLine(message);
         }
 
-        static List<Dog> FindDogs(List<Creature> creatures) => throw new NotImplementedException();
+        static List<Dog> FindDogs(List<Creature> creatures) => 
+            creatures.FindAll(x => x is Dog).ConvertAll(x => x as Dog)!;
 
         public static void Main(string[] args)
         {
